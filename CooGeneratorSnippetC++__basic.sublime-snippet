@@ -1,0 +1,75 @@
+<snippet>
+	<content><![CDATA[
+// I'm the bone of my code. Syntax is my body, Data is my blood ...
+#include<bits/stdc++.h>
+using namespace std;
+
+namespace FastIO
+{
+    template<class T > inline bool read(T &x) // signed int and long long
+    {
+        char c; bool flag = 0;
+        do { c = getchar(); } while (!isdigit(c) && c != '-' && c != EOF);
+        if (c == EOF) return 0;
+        if (c == '-') flag = 1, c = getchar();
+        x = c - '0';
+        do
+        {
+            c = getchar();
+            if (c == EOF || !isdigit(c)) break;
+            x = x * 10 + c - '0';
+        }
+        while (1);
+        if (flag) x = -x;
+        return 1;
+    }
+ 
+    template<class T > inline void write(T x)
+    {
+        if (x < 0) putchar('-'), write(-x);
+        else
+        if (x < 10) putchar(x + '0');
+        else write(x / 10), putchar(x % 10 + '0');
+    }
+}
+
+using namespace FastIO;
+
+typedef long long ll;
+
+ll RAND(ll mod, ll type = 0) // [0 + type .. mod + type)
+{
+    return abs(rand() + rand() + rand() * rand() * 201012312 + rand() - rand() * 12121) % mod + type;
+}
+
+ll RAND_prio(ll mod, ll prio, ll chance = 50, ll type = 0) // [0..mod), but prio first
+{
+    ll tmp = RAND(100);
+    if (tmp > chance) 
+        return prio;
+    else 
+        return RAND(mod, type);
+}
+
+const int N = 1e5;
+
+// default : based-1
+
+int main()
+{
+    if (fopen("main.in", "r"))
+        assert(freopen("main.in", "w", stdout));
+    
+    srand(time(0));
+    $0
+
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>generator_basic</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+
+	<description> generate basic template for c++ </description>
+
+</snippet>

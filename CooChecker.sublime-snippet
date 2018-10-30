@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+sample="${1:sample}"
+naive="${2:naive}"
+gen="${3:gen}"
+
+g++ -std=c++11 -O2 "$sample.cpp" -o "$sample"
+g++ -std=c++11 -O2 "$naive.cpp" -o "$naive"
+g++ -std=c++11 -O2 "$gen.cpp" -o "$gen"
+count=0
+while [ 1 ] ; do
+	./$gen
+	./$naive > foo.txt
+	./$sample > bar.txt
+
+	diff foo.txt bar.txt || exit
+	$0
+	let count=count+1
+	echo $count
+done
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>coochecker</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.shell</scope>
+
+	<description> checker while loop using bash </description>
+</snippet>

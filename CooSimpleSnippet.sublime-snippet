@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+// I'm the bone of my code. Syntax is my body, Data is my blood ...
+#include<bits/stdc++.h>
+using namespace std;
+
+main()
+{
+	if (fopen("main.in", "r"))
+		assert(freopen("main.in", "r", stdin));
+	
+	$0
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>coobasic</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+
+	<description> cootemplate for c++ </description>
+
+</snippet>

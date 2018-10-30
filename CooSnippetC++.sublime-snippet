@@ -1,0 +1,111 @@
+<snippet>
+	<content><![CDATA[
+// I'm the bone of my code. Syntax is my body, Data is my blood ...
+#include<bits/stdc++.h>
+#define DEBUG 0
+#define BIT(x, y) ( (x) >> (y) & 1 )
+#define FILE "${1:sample}"
+using namespace std;
+
+namespace FastIO
+{
+    template<class T > inline bool read(T &x) // signed int and long long
+    {
+        char c; bool flag = 0;
+        do { c = getchar(); } while (!isdigit(c) && c != '-' && c != EOF);
+        if (c == EOF) return 0;
+        if (c == '-') flag = 1, c = getchar();
+        x = c - '0';
+        do
+        {
+        	c = getchar();
+        	if (c == EOF || !isdigit(c)) break;
+        	x = x * 10 + c - '0';
+        }
+        while (1);
+        if (flag) x = -x;
+        return 1;
+    }
+ 
+	inline bool read(string &x) // normal string with [0..9], [a..z], [A..Z]
+	{
+		char c;
+        do { c = getchar(); } while (!isalnum(c) && c != EOF);
+        if (c == EOF) return 0;
+        x.clear(); x += c;
+        do
+        {
+        	c = getchar();
+        	if (c == EOF || !isalnum(c)) break;
+        	x += c;
+        }
+        while (1);
+        return 1;
+	}    
+ 
+    template<class T > inline void write(T x)
+    {
+        if (x < 0) putchar('-'), write(-x);
+        else
+        if (x < 10) putchar(x + '0');
+        else write(x / 10), putchar(x % 10 + '0');
+    }
+
+    inline void write(string &x)
+    {
+    	for (char c : x) putchar(c);
+    }
+}
+
+
+namespace Math
+{
+    template<class T > // use only with signed int and long long
+    inline T add(T a, T b, T mod)
+    { 
+        T c = a - mod + b; 
+        if (c < 0) c += mod;
+        return c;
+    }
+
+    template<class T > // same guarantee
+    inline T mul(T a, T b, T mod)
+    {
+        T c = 0;
+        for (; b > 0; b /= 2, a = add(a, a, mod))
+            if (b & 1) c = add(c, a, mod);
+        return c;
+    }
+
+    template<class T > 
+    T powpow(T a, T b, T mod)
+    {
+        T c = 1;
+        for (; b > 0; b /= 2, a = mul(a, a, mod))
+            if (b & 1) c = mul(c, a, mod);
+        return c;        
+    }
+}
+
+
+${2:int} main()
+{
+	if (fopen("main.in", "r"))
+		// assert(freopen("main.out", "w", stdout)),
+		// assert(freopen("main.err", "w", stderr)),
+		assert(freopen("main.in", "r", stdin));
+	else
+		// assert(freopen(FILE".${3:out}", "w", stdout)),
+		assert(freopen(FILE".${4:inp}", "r", stdin));
+
+	$0
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>coosnippet</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+
+	<description> cootemplate for c++ </description>
+
+</snippet>
